@@ -102,6 +102,7 @@ COPY --from=node-builder /app/public/build /var/www/html/public/build
 # Runtime config (Apache vhost, PHP ini, entrypoint)
 COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY docker/php/php_large_file_upload.ini /usr/local/etc/php/conf.d/php_large_file_upload.ini
+COPY docker/php/security.ini /usr/local/etc/php/conf.d/zz-security.ini
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 
 RUN a2enmod rewrite \
